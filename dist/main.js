@@ -1,1 +1,1 @@
-console.log("Hi-ya everyone!");
+document.getElementById("content");

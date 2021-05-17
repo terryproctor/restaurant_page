@@ -1,0 +1,43 @@
+#content {
+    height: 100%;
+    min-height: 100vh;
+    max-width: 100vw;
+    background-image: url("iceCreamBack.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 50%;
+    background-size: 100vmax;
+    padding: 0;
+}
+
+html,body {
+    padding: 0;
+    margin: 0;
+}
+
+
+h1 {
+    margin-top: 0;
+    color: #fff;
+}
+
+.tab {
+    color: #fff;
+    flex: 1;
+    text-align: center;
+    list-style-type: none;
+}
+
+#top {
+    background: rgba(0,0,0,.6);
+}
+
+#navbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    flex-flow: nowrap;
+    padding: 0;
+    }
