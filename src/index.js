@@ -1,3 +1,6 @@
-//console.log('Hi everyone!');
-let content = document.getElementById('content');
+import { test } from './menu.js'
+
+test();
+
+
 
