@@ -15,7 +15,6 @@ html,body {
     margin: 0;
 }
 
-
 h1 {
     margin-top: 0;
     color: rgb(108, 230, 247);
@@ -36,13 +35,11 @@ h1 {
 
 .tab:hover {
     transform: translateY(-2.5px);
-
 }
 
 #top {
     background: rgba(0,0,0,.6);
     padding: 3px;
-
 }
 
 #navbar {
@@ -74,8 +71,4 @@ p, h3 {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.2rem;
     padding: 25px;
-}
-
-#contactSection, #menuSection {
-    display: none;
 }
