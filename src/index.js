@@ -36,10 +36,10 @@ const createSection = (name, display) => {
     newDiv.style.display = display;
     return newDiv;
 };
-bottom.appendChild(createSection('homeSection', ''));
-bottom.appendChild(createSection('menuSection', 'none'));
-bottom.appendChild(createSection('contactSection', 'none'));
+const sections = [['homeSection', ''], ['menuSection', 'none'], ['contactSection', 'none']]
+sections.forEach(y => bottom.appendChild(createSection(y[0], y[1])))
 
+//track user selection of tabs in navbar
 ul.addEventListener('click', (e) => {
     console.log(e.target);
 }
