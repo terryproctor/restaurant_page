@@ -36,7 +36,7 @@ const createSection = (name, d) => {
     newDiv.style.display = d;
     return newDiv;
 };
-const sections = [['homeSection', ''], ['menuSection', 'none'], ['contactSection', 'none']]
+const sections = [['homeSection', 'none'], ['menuSection', ''], ['contactSection', 'none']]
 sections.forEach(s => bottom.appendChild(createSection(s[0], s[1])))
 
 //create home section paragraphs
@@ -65,7 +65,7 @@ const menuItems = [
     ['p', 'Buckfast flavoured icecream using real Buckfast!'],
     ['h4', 'Irn Bru Shaved Ice'],
     ['p', 'Shaved ice dessert with lashing of favourite drink, made with extra girders!'],
-    ['h4', 'Gelato'],
+    ['h4', 'Tablet Gelato'],
     ['p', 'A extra creamy dessert, featuring homemade tablet.'],
 ]
 
