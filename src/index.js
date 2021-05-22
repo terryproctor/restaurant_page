@@ -1,5 +1,5 @@
-import { test } from './menu.js'
-test();
+// import { test } from './menu.js'
+// test();
 
 //setup bottom and top divs and set background image
 let content = document.getElementById('content');
@@ -28,19 +28,55 @@ const tabs = ['Home', 'Menu', 'Contact'];
 tabs.forEach(x => ul.appendChild(createTab(x)));
 
 //create three content sections
-const createSection = (name, display) => {
+const createSection = (name, d) => {
     let newDiv = document.createElement('div');
     newDiv.classList.add('section');
     newDiv.id = name;
     newDiv.classList.add = 'section';
-    newDiv.style.display = display;
+    newDiv.style.display = d;
     return newDiv;
 };
 const sections = [['homeSection', ''], ['menuSection', 'none'], ['contactSection', 'none']]
-sections.forEach(y => bottom.appendChild(createSection(y[0], y[1])))
+sections.forEach(s => bottom.appendChild(createSection(s[0], s[1])))
+
+//create home section paragraphs
+const homeParagraphs = [
+    ['p','Welcome to finest ice-cream parlour in all of Scotland.'],
+    ['p','100% organic icecream, from Scottish Dairies.'],
+    ['p','Innovative Scottish flavours, bursting with flavour!'],
+    ]
+let homeSection = document.getElementById('homeSection');
+
+// create input function (html-tag, text, css class)
+const createPara = (classType, text, style) => {
+    let newPara = document.createElement(classType);
+    newPara.textContent = text;
+    newPara.classList.add(style);
+    return newPara;
+};
+homeParagraphs.forEach(paragraph => {
+    homeSection.appendChild(createPara(paragraph[0], paragraph[1], 'paragraph'))
+});
+
+// create Menu section paragraphs
+const menuItems = [
+    ['h3', 'Menu'],
+    ['h4', 'Buckfast Sundae'],
+    ['p', 'Buckfast flavoured icecream using real Buckfast!'],
+    ['h4', 'Irn Bru Shaved Ice'],
+    ['p', 'Shaved ice dessert with lashing of favourite drink, made with extra girders!'],
+    ['h4', 'Gelato'],
+    ['p', 'A extra creamy dessert, featuring homemade tablet.'],
+]
+
+let menuSection = document.getElementById('menuSection');
+menuItems.forEach(element => {
+    menuSection.appendChild(createPara(element[0], element[1], 'menuItem'))
+});
 
 //track user selection of tabs in navbar
 ul.addEventListener('click', (e) => {
     console.log(e.target);
 }
 );
+
