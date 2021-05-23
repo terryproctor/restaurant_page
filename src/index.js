@@ -36,7 +36,7 @@ const createSection = (name, d) => {
     newDiv.style.display = d;
     return newDiv;
 };
-const sections = [['homeSection', 'none'], ['menuSection', ''], ['contactSection', 'none']]
+const sections = [['homeSection', ''], ['menuSection', 'none'], ['contactSection', 'none']]
 sections.forEach(s => bottom.appendChild(createSection(s[0], s[1])))
 
 //create home section paragraphs
@@ -74,6 +74,22 @@ menuItems.forEach(element => {
     menuSection.appendChild(createPara(element[0], element[1], 'menuItem'))
 });
 
+const contactDetails = [
+    ['h5', 'Address:'],
+    ['p', '67 Princes Street, Edinburgh'],
+    ['h5', 'Tel:'],
+    ['p', '0131 5896247'],
+    ['h5', 'Email:'],
+    ['p', "TIceCream@gmail.com"],
+]
+
+let contactSection = document.getElementById('contactSection');
+contactDetails.forEach(paragraph => {
+    contactSection.appendChild(createPara(paragraph[0], paragraph[1], 'paragraph'))
+});
+
+
+// next!!!
 //track user selection of tabs in navbar
 ul.addEventListener('click', (e) => {
     console.log(e.target);
