@@ -21,10 +21,11 @@ navbar.appendChild(ul);
 const createTab = (name) => {
     let newDiv = document.createElement('div');
     newDiv.classList.add('tab');
+    newDiv.dataset.value = `${name.toLowerCase()}`
     newDiv.textContent = name;
     return newDiv;
 };
-const tabs = ['Home', 'Menu', 'Contact'];
+const tabs = ['home', 'menu', 'contact'];
 tabs.forEach(x => ul.appendChild(createTab(x)));
 
 //create three content sections
@@ -91,8 +92,18 @@ contactDetails.forEach(paragraph => {
 
 // next!!!
 //track user selection of tabs in navbar
+//
 ul.addEventListener('click', (e) => {
-    console.log(e.target);
-}
-);
-
+    if (e.target.classList.contains('tab')) {
+        let selected = document.getElementById(`${e.target.dataset.value}Section`);
+        const sections = document.getElementsByClassName('section');
+        console.log(sections);
+        for (item of sections) {
+            if (item !== selected){
+                item.style.display= 'none';
+            } else {
+                item.style.display= '';
+            }
+        }
+    }
+});
