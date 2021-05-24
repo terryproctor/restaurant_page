@@ -1,6 +1,3 @@
-// import { test } from './menu.js'
-// test();
-
 //setup bottom and top divs and set background image
 let content = document.getElementById('content');
 let top = document.createElement('div');
@@ -26,7 +23,7 @@ const createTab = (name) => {
     return newDiv;
 };
 const tabs = ['home', 'menu', 'contact'];
-tabs.forEach(x => ul.appendChild(createTab(x)));
+tabs.forEach(tab => ul.appendChild(createTab(tab)));
 
 //create three content sections
 const createSection = (name, d) => {
@@ -97,7 +94,6 @@ ul.addEventListener('click', (e) => {
     if (e.target.classList.contains('tab')) {
         let selected = document.getElementById(`${e.target.dataset.value}Section`);
         const sections = document.getElementsByClassName('section');
-        console.log(sections);
         for (item of sections) {
             if (item !== selected){
                 item.style.display= 'none';
