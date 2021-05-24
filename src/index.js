@@ -26,16 +26,15 @@ const tabs = ['home', 'menu', 'contact'];
 tabs.forEach(tab => ul.appendChild(createTab(tab)));
 
 //create three content sections
-const createSection = (name, d) => {
+const createSection = (name) => {
     let newDiv = document.createElement('div');
     newDiv.classList.add('section');
     newDiv.id = name;
     newDiv.classList.add = 'section';
-    newDiv.style.display = d;
     return newDiv;
 };
-const sections = [['homeSection', ''], ['menuSection', 'none'], ['contactSection', 'none']]
-sections.forEach(s => bottom.appendChild(createSection(s[0], s[1])))
+const sections = [['homeSection'], ['menuSection'], ['contactSection']]
+bottom.appendChild(createSection(sections[0]));
 
 //create home section paragraphs
 const homeParagraphs = [
@@ -67,10 +66,11 @@ const menuItems = [
     ['p', 'A extra creamy dessert, featuring homemade tablet.'],
 ]
 
-let menuSection = document.getElementById('menuSection');
-menuItems.forEach(element => {
-    menuSection.appendChild(createPara(element[0], element[1], 'menuItem'))
-});
+// no longer works need event listener to do this instead
+// let menuSection = document.getElementById('menuSection');
+// menuItems.forEach(element => {
+//     menuSection.appendChild(createPara(element[0], element[1], 'menuItem'))
+// });
 
 const contactDetails = [
     ['h5', 'Address:'],
@@ -81,10 +81,10 @@ const contactDetails = [
     ['p', "TIceCream@gmail.com"],
 ]
 
-let contactSection = document.getElementById('contactSection');
-contactDetails.forEach(paragraph => {
-    contactSection.appendChild(createPara(paragraph[0], paragraph[1], 'paragraph'))
-});
+// let contactSection = document.getElementById('contactSection');
+// contactDetails.forEach(paragraph => {
+//     contactSection.appendChild(createPara(paragraph[0], paragraph[1], 'paragraph'))
+// });
 
 
 // next!!!
@@ -93,13 +93,7 @@ contactDetails.forEach(paragraph => {
 ul.addEventListener('click', (e) => {
     if (e.target.classList.contains('tab')) {
         let selected = document.getElementById(`${e.target.dataset.value}Section`);
-        const sections = document.getElementsByClassName('section');
-        for (item of sections) {
-            if (item !== selected){
-                item.style.display= 'none';
-            } else {
-                item.style.display= '';
-            }
-        }
+        //remove bottms sections so a new one can be created
+        bottom.querySelectorAll('*').forEach(item => item.remove())
     }
 });
