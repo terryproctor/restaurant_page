@@ -77,24 +77,27 @@ function createItem(classType, text, style){
 	};
 
 function createSection(sectionItem){
-	    let style = this.style;
+	    let style = sectionItem.style;
+        let elements = sectionItem.elements;
 	    let newDiv = document.createElement('div');
     	newDiv.classList.add('section');
     	newDiv.id = sectionItem.name;
-
-    	sectionItem[elements].forEach(element => {
+        
+        console.log(sectionItem.elements);
+    	
+        sectionItem.elements.forEach(element => {
     	newDiv.appendChild(createItem(element[0], element[1], style))
+	    })
         return newDiv;
-	    }
-        )
-};
+    };
 
-bottom.appendChild(createSection(sections.home));
+bottom.appendChild(createSection(homeSection));
 
-ul.addEventListener('click', (e) => {
-    if (e.target.classList.contains('tab')) {
-        let selected = document.getElementById(`${e.target.dataset.value}Section`);
-        //remove bottms sections so a new one can be created
-        bottom.querySelectorAll('*').forEach(item => item.remove())
-    }
-});
+// ul.addEventListener('click', (e) => {
+//     if (e.target.classList.contains('tab')) {
+//         let selected = document.getElementById(e.target.dataset.value);
+//         console.log(selected);
+//         //remove bottms sections so a new one can be created
+//         bottom.querySelectorAll('*').forEach(item => item.remove())
+//         }
+//     });
