@@ -1,14 +1,18 @@
 //setup bottom and top divs and set background image
 let content = document.getElementById('content');
-let top = document.createElement('div');
-top.id = 'top';
-let bottom = document.createElement('div');
-bottom.id = 'bottom';
-content.appendChild(top);
-content.appendChild(bottom);
+
+function createHalf(name) {
+    let newDiv = document.createElement('div');
+    newDiv.id = String(name);
+    return newDiv;
+    };
+//create top and bottom
+content.appendChild(createHalf('top'));
+content.appendChild(createHalf('bottom'));
 
 //create navbar without content
 let navbar = document.createElement('div');
+let top = document.getElementById('top');
 top.appendChild(navbar);
 let ul = document.createElement('ul');
 ul.id ='navbar'
@@ -30,7 +34,6 @@ const createSection = (name) => {
     let newDiv = document.createElement('div');
     newDiv.classList.add('section');
     newDiv.id = name;
-    newDiv.classList.add = 'section';
     return newDiv;
 };
 const sections = [['homeSection'], ['menuSection'], ['contactSection']]
