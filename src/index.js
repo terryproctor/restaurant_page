@@ -43,8 +43,8 @@ const menuSection = {
         ['p', 'Buckfast flavoured icecream using real Buckfast!'],
         ['h4', 'Irn Bru Shaved Ice'],
         ['p', "Shaved ice dessert with lashing of Scotland's favourite drink, made with extra girders!"],
-        ['p', 'An extra creamy dessert, featuring homemade tablet.'],
         ['h4', 'Tablet Gelato'],
+        ['p', 'An extra creamy dessert, featuring homemade tablet.'],
         ],
     style: 'menuItem',
     };
@@ -53,11 +53,11 @@ const contactSection = {
 	name: 'contact',
 	elements: [
 		['h5', 'Address:'],
+        ['p', '67 Princes Street, Edinburgh'],
         ['h5', 'Tel:'],
         ['p', '0131 5896247'],
         ['h5', 'Email:'],
         ['p', "TIceCream@gmail.com"],
-        ['p', '67 Princes Street, Edinburgh'],
         ],
     style: 'paragraph',
 	};
@@ -68,7 +68,6 @@ const sections = {
 	contact: contactSection, 
 	};
 	
-
 function createItem(classType, text, style){
 	    let newElement = document.createElement(classType);
     	newElement.textContent = text;
@@ -78,26 +77,25 @@ function createItem(classType, text, style){
 
 function createSection(sectionItem){
 	    let style = sectionItem.style;
-        let elements = sectionItem.elements;
 	    let newDiv = document.createElement('div');
     	newDiv.classList.add('section');
     	newDiv.id = sectionItem.name;
-        
-        console.log(sectionItem.elements);
-    	
+        //create and append each item to new div
         sectionItem.elements.forEach(element => {
     	newDiv.appendChild(createItem(element[0], element[1], style))
 	    })
         return newDiv;
     };
 
-bottom.appendChild(createSection(homeSection));
+bottom.appendChild(createSection(sections.home));
 
-// ul.addEventListener('click', (e) => {
-//     if (e.target.classList.contains('tab')) {
-//         let selected = document.getElementById(e.target.dataset.value);
-//         console.log(selected);
-//         //remove bottms sections so a new one can be created
-//         bottom.querySelectorAll('*').forEach(item => item.remove())
-//         }
-//     });
+ul.addEventListener('click', (e) => {
+    if (e.target.classList.contains('tab')) {
+        let selected = e.target.dataset.value;
+        //remove bottom sections so a new one can be created
+        bottom.querySelectorAll('*').forEach(item => item.remove());
+        //create new section
+        bottom.appendChild(createSection(sections[selected]));
+        console.log(sections[selected]);
+        };
+    });
