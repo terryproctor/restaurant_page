@@ -1,6 +1,3 @@
-//setup bottom and top divs and set background image
-let content = document.getElementById('content');
-
 function createHalf(name) {
     let newDiv = document.createElement('div');
     newDiv.id = String(name);
@@ -15,84 +12,85 @@ let navbar = document.createElement('div');
 let top = document.getElementById('top');
 top.appendChild(navbar);
 let ul = document.createElement('ul');
-ul.id ='navbar'
-navbar.appendChild(ul);
+ul.id ='navbar';
+navbar.appendChild(ul);	
 
-//create the three tabs in navbar
-const createTab = (name) => {
-    let newDiv = document.createElement('div');
-    newDiv.classList.add('tab');
-    newDiv.dataset.value = `${name.toLowerCase()}`
-    newDiv.textContent = name;
-    return newDiv;
+tabs = ['Home', 'Menu', 'Contact']
+tabs.forEach(tab => {
+    let newTab = document.createElement('li');
+    newTab.classList.add('tab');
+    newTab.dataset.value = `${tab.toLowerCase()}`;
+    newTab.textContent = String(tab);
+    ul.appendChild(newTab);
+})
+	
+// section objects
+const homeSection = {
+	name: 'home',
+    elements: [
+    	["p",'Welcome to finest ice-cream parlour in all of Scotland.'],
+    	['p','100% organic icecream, from Scottish dairies.'],
+    	['p','Innovative Scottish flavours, bursting with flavour!'],
+    	],
+    style: 'paragraph',
+    };
+    
+const menuSection = {
+	name: 'menu',
+	elements: [
+		['h3', 'Menu'],
+        ['h4', 'Buckfast Sundae'],
+        ['p', 'Buckfast flavoured icecream using real Buckfast!'],
+        ['h4', 'Irn Bru Shaved Ice'],
+        ['p', "Shaved ice dessert with lashing of Scotland's favourite drink, made with extra girders!"],
+        ['p', 'An extra creamy dessert, featuring homemade tablet.'],
+        ['h4', 'Tablet Gelato'],
+        ],
+    style: 'menuItem',
+    };
+    	
+const contactSection = {
+	name: 'contact',
+	elements: [
+		['h5', 'Address:'],
+        ['h5', 'Tel:'],
+        ['p', '0131 5896247'],
+        ['h5', 'Email:'],
+        ['p', "TIceCream@gmail.com"],
+        ['p', '67 Princes Street, Edinburgh'],
+        ],
+    style: 'paragraph',
+	};
+
+const sections = {
+	home: homeSection, 
+	menu: menuSection, 
+	contact: contactSection, 
+	};
+	
+
+function createItem(classType, text, style){
+	    let newElement = document.createElement(classType);
+    	newElement.textContent = text;
+    	newElement.classList.add(style);
+        return newElement;
+	};
+
+function createSection(sectionItem){
+	    let style = this.style;
+	    let newDiv = document.createElement('div');
+    	newDiv.classList.add('section');
+    	newDiv.id = sectionItem.name;
+
+    	sectionItem[elements].forEach(element => {
+    	newDiv.appendChild(createItem(element[0], element[1], style))
+        return newDiv;
+	    }
+        )
 };
-const tabs = ['home', 'menu', 'contact'];
-tabs.forEach(tab => ul.appendChild(createTab(tab)));
 
-//create three content sections
-const createSection = (name) => {
-    let newDiv = document.createElement('div');
-    newDiv.classList.add('section');
-    newDiv.id = name;
-    return newDiv;
-};
-const sections = [['homeSection'], ['menuSection'], ['contactSection']]
-bottom.appendChild(createSection(sections[0]));
+bottom.appendChild(createSection(sections.home));
 
-//create home section paragraphs
-const homeParagraphs = [
-    ['p','Welcome to finest ice-cream parlour in all of Scotland.'],
-    ['p','100% organic icecream, from Scottish Dairies.'],
-    ['p','Innovative Scottish flavours, bursting with flavour!'],
-    ]
-let homeSection = document.getElementById('homeSection');
-
-// create input function (html-tag, text, css class)
-const createPara = (classType, text, style) => {
-    let newPara = document.createElement(classType);
-    newPara.textContent = text;
-    newPara.classList.add(style);
-    return newPara;
-};
-homeParagraphs.forEach(paragraph => {
-    homeSection.appendChild(createPara(paragraph[0], paragraph[1], 'paragraph'))
-});
-
-// create Menu section paragraphs
-const menuItems = [
-    ['h3', 'Menu'],
-    ['h4', 'Buckfast Sundae'],
-    ['p', 'Buckfast flavoured icecream using real Buckfast!'],
-    ['h4', 'Irn Bru Shaved Ice'],
-    ['p', 'Shaved ice dessert with lashing of favourite drink, made with extra girders!'],
-    ['h4', 'Tablet Gelato'],
-    ['p', 'A extra creamy dessert, featuring homemade tablet.'],
-]
-
-// no longer works need event listener to do this instead
-// let menuSection = document.getElementById('menuSection');
-// menuItems.forEach(element => {
-//     menuSection.appendChild(createPara(element[0], element[1], 'menuItem'))
-// });
-
-const contactDetails = [
-    ['h5', 'Address:'],
-    ['p', '67 Princes Street, Edinburgh'],
-    ['h5', 'Tel:'],
-    ['p', '0131 5896247'],
-    ['h5', 'Email:'],
-    ['p', "TIceCream@gmail.com"],
-]
-
-// let contactSection = document.getElementById('contactSection');
-// contactDetails.forEach(paragraph => {
-//     contactSection.appendChild(createPara(paragraph[0], paragraph[1], 'paragraph'))
-// });
-
-
-// next!!!
-//track user selection of tabs in navbar
-//
 ul.addEventListener('click', (e) => {
     if (e.target.classList.contains('tab')) {
         let selected = document.getElementById(`${e.target.dataset.value}Section`);
