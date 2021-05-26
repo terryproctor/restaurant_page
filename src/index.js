@@ -1,67 +1,7 @@
-function createHalf(name) {
-    let newDiv = document.createElement('div');
-    newDiv.id = String(name);
-    return newDiv;
-    };
-//create top and bottom
-content.appendChild(createHalf('top'));
-content.appendChild(createHalf('bottom'));
-
-//create navbar without content
-let navbar = document.createElement('div');
-let top = document.getElementById('top');
-top.appendChild(navbar);
-let ul = document.createElement('ul');
-ul.id ='navbar';
-navbar.appendChild(ul);	
-
-tabs = ['Home', 'Menu', 'Contact']
-tabs.forEach(tab => {
-    let newTab = document.createElement('li');
-    newTab.classList.add('tab');
-    newTab.dataset.value = `${tab.toLowerCase()}`;
-    newTab.textContent = String(tab);
-    ul.appendChild(newTab);
-})
-	
-// section objects
-const homeSection = {
-	name: 'home',
-    elements: [
-        ["H1","Terry's Ice-cream Parlour"],
-    	["p",'Welcome to finest ice-cream parlour in all of Scotland.'],
-    	['p','100% organic icecream, from Scottish dairies.'],
-    	['p','Innovative Scottish flavours, bursting with flavour!'],
-    	],
-    style: 'paragraph',
-    };
-    
-const menuSection = {
-	name: 'menu',
-	elements: [
-		['h3', 'Menu'],
-        ['h4', 'Buckfast Sundae'],
-        ['p', 'Buckfast flavoured icecream using real Buckfast!'],
-        ['h4', 'Irn Bru Shaved Ice'],
-        ['p', "Shaved ice dessert with lashing of Scotland's favourite drink, made with extra girders!"],
-        ['h4', 'Tablet Gelato'],
-        ['p', 'An extra creamy dessert, featuring homemade tablet.'],
-        ],
-    style: 'menuItem',
-    };
-    	
-const contactSection = {
-	name: 'contact',
-	elements: [
-		['h5', 'Address:'],
-        ['p', '67 Princes Street, Edinburgh'],
-        ['h5', 'Tel:'],
-        ['p', '0131 5896247'],
-        ['h5', 'Email:'],
-        ['p', "TIceCream@gmail.com"],
-        ],
-    style: 'paragraph',
-	};
+import { webpage } from './website.js';
+import { homeSection } from './home.js';
+import { menuSection } from './menu.js';
+import { contactSection } from './contact.js';
 
 const sections = {
 	home: homeSection, 
@@ -88,8 +28,11 @@ function createSection(sectionItem){
         return newDiv;
     };
 
-bottom.appendChild(createSection(sections.home));
+//intial home page
+bottom.appendChild(createSection(homeSection));
 
+//tab listening to selection, destroys content and creates new
+const ul = webpage.ul;
 ul.addEventListener('click', (e) => {
     if (e.target.classList.contains('tab')) {
         let selected = e.target.dataset.value;
