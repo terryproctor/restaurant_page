@@ -40,6 +40,5 @@ ul.addEventListener('click', (e) => {
         bottom.querySelectorAll('*').forEach(item => item.remove());
         //create new section
         bottom.appendChild(createSection(sections[selected]));
-        console.log(sections[selected]);
         };
     });
